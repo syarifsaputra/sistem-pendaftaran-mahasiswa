@@ -1,6 +1,6 @@
-# Sistem Pendaftaran Mahasiswa Baru
+# Sistem Pendaftaran Mahasiswa Baru UTS 
 
-Aplikasi web pendaftaran mahasiswa baru berbasis **PHP native** tanpa framework dan tanpa database. Data disimpan di session dan dicadangkan ke file JSON. Proyek ini dibuat untuk tugas UTS matakuliah **Pemrograman Web II**, Teknik Informatika, Universitas Pamulang.
+Aplikasi web pendaftaran mahasiswa baru berbasis **PHP native** ini adalah Tugas UTS Saya Dan Dari Dosen Memerintahkan untuk Mencoba tanpa framework dan tanpa database. Data disimpan di session dan dicadangkan ke file JSON. Proyek ini dibuat untuk tugas UTS matakuliah **Pemrograman Web II**, Teknik Informatika, Universitas Pamulang.
 
 ## Tampilan
 
@@ -102,7 +102,6 @@ Peserta contoh yang Lulus akan otomatis mendapat NIM saat halaman dibuka. NIM-ny
 ├── logout.php                     # Keluar dari akun
 ├── config.php                     # Session, fungsi bantu, aturan seleksi dan kode
 ├── style.css                      # Gaya dasar
-├── form.css                       # Tema tampilan semua halaman
 ├── data_mahasiswa.example.json    # Contoh data
 └── docs/screenshots/              # Gambar untuk README
 ```
