@@ -1,0 +1,9 @@
+# Data pendaftar (berisi data pribadi & hash password)
+data_mahasiswa.json
+
+# File sistem & editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log

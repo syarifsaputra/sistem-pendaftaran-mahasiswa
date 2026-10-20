@@ -1,0 +1,1022 @@
+/* form.css — muat SETELAH style.css supaya menimpa gaya lama */
+
+body.reg-body {
+  background: #eef1f5;
+}
+
+main.reg {
+  --ink: #1b2433;
+  --muted: #5b6678;
+  --line: #d5dbe5;
+  --surface: #ffffff;
+  --primary: #2347c5;
+  --ok: #12805c;
+  --ok-bg: #e4f4ec;
+  --warn: #8a5600;
+  --warn-bg: #fbf0d9;
+  --err: #c53030;
+  --err-bg: #fdecec;
+
+  display: block;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 28px 20px 56px;
+  color: var(--ink);
+  font-family:
+    "Plus Jakarta Sans",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  line-height: 1.5;
+}
+.reg *,
+.reg *::before,
+.reg *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Header & navigasi (mandiri, tidak bergantung style.css) ---------- */
+body.reg-body {
+  margin: 0;
+  font-family:
+    "Plus Jakarta Sans",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+body.reg-body > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin: 0;
+  padding: 14px max(20px, calc((100% - 1160px) / 2 + 20px));
+  background: #1b2433;
+  color: #fff;
+  border: 0;
+  border-bottom: 3px solid #2347c5;
+  box-shadow: none;
+}
+body.reg-body > header h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #fff;
+  background: none;
+}
+body.reg-body > header h1::before {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 28px;
+  border-radius: 4px;
+  background: #f2b600;
+}
+body.reg-body > header nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+body.reg-body > header nav a {
+  display: inline-block;
+  margin: 0;
+  padding: 8px 14px;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #c9d2e3;
+  background: transparent;
+  text-decoration: none;
+  border-radius: 8px;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+body.reg-body > header nav a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+body.reg-body > header nav a:focus-visible {
+  outline: 3px solid #f2b600;
+  outline-offset: 2px;
+}
+body.reg-body > header nav a[aria-current="page"] {
+  background: #fff;
+  color: #1b2433;
+}
+
+@media (max-width: 560px) {
+  body.reg-body > header {
+    padding: 12px 16px;
+  }
+  body.reg-body > header h1 {
+    font-size: 16px;
+  }
+}
+
+/* ---------- Judul halaman ---------- */
+.reg-head {
+  margin-bottom: 22px;
+}
+.reg-head h2 {
+  margin: 0 0 6px;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.reg-head p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+/* ---------- Layout dua kolom ---------- */
+.reg-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 28px;
+  align-items: start;
+}
+
+.reg-sheet {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Tiap bagian: judul di kiri, isian di kanan */
+.reg .sec {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 28px;
+  padding: 28px 32px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+.reg .sec:first-of-type {
+  border-top: 0;
+}
+.reg .sec h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+.reg .sec-note {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.reg .fields {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+.reg .row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.reg .row3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ---------- Isian ---------- */
+.reg .field {
+  min-width: 0;
+}
+.reg label,
+.reg .label {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.reg input:not([type="radio"]),
+.reg select,
+.reg textarea {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 11px 13px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s,
+    background-color 0.15s;
+  scroll-margin-top: 96px;
+}
+.reg textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+.reg input::placeholder,
+.reg textarea::placeholder {
+  color: #98a2b3;
+}
+.reg input:hover:not(:focus):not([readonly]),
+.reg select:hover:not(:focus),
+.reg textarea:hover:not(:focus) {
+  border-color: #aeb8c8;
+}
+.reg input:focus,
+.reg select:focus,
+.reg textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(35, 71, 197, 0.18);
+}
+.reg input[readonly] {
+  background: #f3f5f8;
+  color: var(--muted);
+}
+.reg .invalid {
+  border-color: var(--err) !important;
+  background: #fff8f8 !important;
+}
+.reg .invalid:focus {
+  box-shadow: 0 0 0 4px rgba(197, 48, 48, 0.16) !important;
+}
+
+.reg .error {
+  margin: 6px 0 0;
+  min-height: 0;
+  font-size: 13px;
+  color: var(--err);
+}
+.reg .error:empty {
+  display: none;
+}
+
+/* Petunjuk untuk pengguna: kuning agar langsung terlihat */
+.reg .help,
+.reg .reg-foot {
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: #5c4200;
+  background: #fff3bf;
+  border-left: 4px solid #f2b600;
+  border-radius: 8px;
+}
+
+/* Kode pendaftaran: dibuat besar karena ini isian utama */
+.reg #kode {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  text-transform: uppercase;
+  padding: 13px 15px;
+}
+
+/* Jenis kelamin: radio klasik (titik). Nama class sengaja unik (jk-*)
+   supaya tidak bentrok dengan .radio-row lama di style.css */
+.reg .jk-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin: 4px 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+.reg .jk-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.reg .jk-item input[type="radio"] {
+  all: revert; /* buang gaya input dari style.css */
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex: none;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+.reg .jk-item input[type="radio"]:focus-visible {
+  outline: 3px solid rgba(35, 71, 197, 0.35);
+  outline-offset: 2px;
+}
+
+/* ---------- Ringkasan error & flash ---------- */
+.reg .alert,
+.reg .reg-alert {
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  border-left-width: 5px;
+  background: #fff;
+  font-size: 14.5px;
+}
+.reg .alert.ok {
+  border-color: var(--ok);
+  background: var(--ok-bg);
+}
+.reg .alert.warn {
+  border-color: var(--warn);
+  background: var(--warn-bg);
+}
+.reg .alert.err,
+.reg .reg-alert {
+  border-color: var(--err);
+  background: var(--err-bg);
+}
+.reg .reg-alert:focus {
+  outline: 3px solid rgba(197, 48, 48, 0.3);
+  outline-offset: 2px;
+}
+.reg .reg-alert strong {
+  display: block;
+  margin-bottom: 4px;
+}
+.reg .reg-alert ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.reg .reg-alert a {
+  color: var(--err);
+  font-weight: 600;
+}
+
+/* ---------- Tombol ---------- */
+.reg .reg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 20px 32px;
+  background: #f8f9fb;
+  border-top: 1px solid var(--line);
+}
+.reg .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  margin: 0;
+  padding: 12px 22px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s,
+    transform 0.05s;
+}
+.reg .btn:active {
+  transform: translateY(1px);
+}
+.reg .btn:focus-visible {
+  outline: 3px solid rgba(35, 71, 197, 0.35);
+  outline-offset: 2px;
+}
+.reg .btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.reg .btn-primary:hover {
+  background: #1b3ba3;
+}
+.reg .btn-ghost {
+  background: #fff;
+  color: var(--ink);
+  border-color: var(--line);
+}
+.reg .btn-ghost:hover {
+  border-color: #aeb8c8;
+}
+.reg .btn-danger {
+  background: #fff;
+  color: var(--err);
+  border-color: #e7b4b4;
+  margin-left: auto;
+}
+.reg .btn-danger:hover {
+  background: var(--err-bg);
+}
+.reg .reg-foot {
+  margin: 16px 32px 22px;
+}
+
+/* ---------- Panel samping ---------- */
+.reg-side {
+  position: sticky;
+  top: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.reg-side > div {
+  padding: 20px 22px;
+}
+.reg-side > div + div {
+  border-top: 1px solid var(--line);
+}
+.reg-side h3 {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+
+/* Kelengkapan */
+.reg .progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+.reg .progress-top h3 {
+  margin: 0;
+}
+.reg .progress-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.reg .bar {
+  height: 8px;
+  background: #e6eaf1;
+  border-radius: 99px;
+  overflow: hidden;
+}
+.reg .bar > i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--primary);
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+.reg .bar.done > i {
+  background: var(--ok);
+}
+
+/* Arti kode pendaftaran */
+.reg .ticket {
+  margin: 0;
+  padding: 4px 14px;
+  background: #f6f8fb;
+  border: 1.5px dashed #b9c2d1;
+  border-radius: 12px;
+}
+.reg .ticket div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 14px;
+}
+.reg .ticket div + div {
+  border-top: 1px dotted #c9d0db;
+}
+.reg .ticket dt {
+  color: var(--muted);
+}
+.reg .ticket dd {
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
+}
+.reg .ticket dd.empty {
+  color: #a3acba;
+  font-weight: 500;
+}
+.reg .ticket-msg {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+  min-height: 1.4em;
+}
+.reg .ticket-msg.bad {
+  color: var(--err);
+}
+.reg .ticket-msg.good {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+/* Hasil seleksi */
+.reg .score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.reg .score-num {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.reg .score-num.empty {
+  color: #a3acba;
+}
+.reg .pill {
+  padding: 5px 12px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #e6eaf1;
+  color: var(--muted);
+}
+.reg .pill.ok {
+  background: var(--ok-bg);
+  color: var(--ok);
+}
+.reg .pill.warn {
+  background: var(--warn-bg);
+  color: var(--warn);
+}
+.reg .pill.err {
+  background: var(--err-bg);
+  color: var(--err);
+}
+
+.reg .meter {
+  position: relative;
+  height: 12px;
+  margin: 18px 0 30px;
+  border-radius: 99px;
+  background: linear-gradient(
+    90deg,
+    #f2c7c7 0 60%,
+    #f5dfae 60% 70%,
+    #bfe3d1 70% 100%
+  );
+}
+.reg .meter-marker {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px var(--ink);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition:
+    left 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.2s;
+}
+.reg .meter.has .meter-marker {
+  opacity: 1;
+}
+.reg .meter-tick {
+  position: absolute;
+  top: 18px;
+  font-size: 12px;
+  color: var(--muted);
+  transform: translateX(-50%);
+  font-variant-numeric: tabular-nums;
+}
+.reg .score-legend {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  color: var(--muted);
+  display: grid;
+  gap: 4px;
+}
+.reg .score-legend b {
+  color: var(--ink);
+}
+.reg .side-note {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ---------- Responsif ---------- */
+@media (max-width: 959px) {
+  main.reg {
+    padding-bottom: 170px;
+  }
+  .reg-layout {
+    grid-template-columns: 1fr;
+  }
+  .reg-side {
+    position: fixed;
+    z-index: 20;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 16px 16px 0 0;
+    border-bottom: 0;
+    box-shadow: 0 -8px 28px rgba(27, 36, 51, 0.14);
+  }
+  .reg-side > div {
+    padding: 14px 18px;
+  }
+  .reg-side > div + div {
+    border-top: 0;
+    border-left: 1px solid var(--line);
+  }
+  .reg .side-ticket,
+  .reg .side-note,
+  .reg .score-legend,
+  .reg .meter-tick {
+    display: none;
+  }
+  .reg .meter {
+    margin: 12px 0 0;
+  }
+  .reg .score-num {
+    font-size: 28px;
+  }
+}
+@media (max-width: 760px) {
+  .reg .sec {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 22px 20px;
+  }
+  .reg .reg-actions {
+    padding: 18px 20px;
+  }
+  .reg .reg-foot {
+    margin: 14px 20px 20px;
+  }
+}
+@media (max-width: 560px) {
+  .reg .row2,
+  .reg .row3 {
+    grid-template-columns: 1fr;
+  }
+  .reg .btn-danger {
+    margin-left: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reg * {
+    transition: none !important;
+  }
+}
+
+/* =====================================================================
+   LAPISAN GLOBAL — dipakai semua halaman (body.reg-body)
+   ===================================================================== */
+
+/* Notifikasi */
+body.reg-body .alert {
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border: 1px solid #d5dbe5;
+  border-left-width: 5px;
+  border-radius: 12px;
+  background: #fff;
+  color: #1b2433;
+  font-size: 14.5px;
+}
+body.reg-body .alert.ok {
+  border-color: #12805c;
+  background: #e4f4ec;
+}
+body.reg-body .alert.warn {
+  border-color: #8a5600;
+  background: #fbf0d9;
+}
+body.reg-body .alert.err {
+  border-color: #c53030;
+  background: #fdecec;
+}
+
+/* Badge status */
+body.reg-body .badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  background: #e6eaf1;
+  color: #5b6678;
+}
+body.reg-body .badge.lulus {
+  background: #e4f4ec;
+  color: #12805c;
+}
+body.reg-body .badge.cadangan {
+  background: #fbf0d9;
+  color: #8a5600;
+}
+body.reg-body .badge.tidak {
+  background: #fdecec;
+  color: #c53030;
+}
+
+/* Tombol Logout di header */
+body.reg-body > header nav .nav-btn {
+  margin: 0 0 0 6px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #fff;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+body.reg-body > header nav .nav-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+body.reg-body > header nav .nav-btn:focus-visible {
+  outline: 3px solid #f2b600;
+  outline-offset: 2px;
+}
+
+/* Tombol tambahan */
+.reg .btn-block {
+  width: 100%;
+}
+.reg .btn-solid-danger {
+  background: var(--err);
+  color: #fff;
+}
+.reg .btn-solid-danger:hover {
+  background: #a32626;
+}
+
+/* Dialog (konfirmasi logout) */
+.reg dialog {
+  width: calc(100% - 32px);
+  max-width: 420px;
+  padding: 26px;
+  color: var(--ink);
+  background: #fff;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(27, 36, 51, 0.3);
+}
+.reg dialog::backdrop {
+  background: rgba(27, 36, 51, 0.55);
+}
+.reg dialog h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+.reg dialog p {
+  margin: 0 0 22px;
+  color: var(--muted);
+}
+.reg .dlg-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 0;
+}
+
+/* =====================================================================
+   HALAMAN LOGIN
+   ===================================================================== */
+main.reg.auth {
+  max-width: 480px;
+  padding-top: 48px;
+}
+.reg .auth-card {
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.reg .auth-card h2 {
+  margin: 0 0 4px;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+.reg .auth-card .lead {
+  margin: 0 0 22px;
+  color: var(--muted);
+}
+.reg .auth-card form {
+  display: grid;
+  gap: 18px;
+  margin: 0;
+}
+.reg .auth-card .alert {
+  margin: 0 0 18px;
+}
+.reg .pw-wrap {
+  position: relative;
+}
+.reg .pw-wrap input:not([type="radio"]) {
+  padding-right: 96px;
+}
+.reg .pw-toggle {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 7px 10px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.reg .pw-toggle:hover {
+  background: #eef2ff;
+}
+.reg .pw-toggle:focus-visible {
+  outline: 3px solid rgba(35, 71, 197, 0.35);
+}
+.reg .auth-foot {
+  margin: 20px 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+.reg .auth-foot a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+.reg .auth-foot a:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================================
+   HALAMAN DASHBOARD MAHASISWA
+   ===================================================================== */
+.reg .profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 0 0 20px;
+  padding: 24px 28px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.reg .avatar {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 26px;
+  font-weight: 800;
+}
+.reg .hero-text {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+.reg .hero-text h2 {
+  margin: 0 0 6px;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+.reg .hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 0;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+.reg .hero-facts span + span {
+  margin-left: 14px;
+  padding-left: 14px;
+  border-left: 1px solid var(--line);
+}
+.reg .hero-facts strong {
+  color: var(--ink);
+}
+.reg .hero-badge .badge {
+  font-size: 15px;
+  padding: 7px 18px;
+}
+
+.reg .kv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 24px;
+  margin: 0;
+  min-width: 0;
+}
+.reg .kv > div {
+  min-width: 0;
+}
+.reg .kv .full {
+  grid-column: 1 / -1;
+}
+.reg .kv dt {
+  margin: 0 0 2px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.reg .kv dd {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.reg .score-box {
+  padding: 14px 16px;
+  background: #f6f8fb;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.reg .score-box span {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+}
+.reg .score-box strong {
+  font-size: 26px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.reg .avg-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.reg .avg-row .label {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .reg .profile-hero {
+    padding: 20px;
+  }
+  .reg .auth-card {
+    padding: 24px 20px;
+  }
+}
+@media (max-width: 560px) {
+  .reg .kv {
+    grid-template-columns: 1fr;
+  }
+  .reg .hero-facts span + span {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: 0;
+  }
+  .reg .hero-facts {
+    flex-direction: column;
+  }
+}
